@@ -6,12 +6,16 @@
 import os
 import torch
 import pickle
+import linecache
 
 
 class FileDataset:
     def __init__(self, file_path, selected_col_ids=None, dtypes=None, separator="\t", cached_index=False):
         self.file_path = file_path
         assert os.path.exists(self.file_path), "Error: The local datafile {} not exists!".format(self.file_path)
+
+        # linecache the file
+        _ = linecache.getline(self.file_path, 1)
 
         self.separator = separator
         if selected_col_ids is None:
@@ -97,11 +101,15 @@ class FileDataset:
         return self.total_row_count
 
     def __getitem__(self, index):
-        if self.data_cnt == self.row_count:
+        #if self.data_cnt == self.row_count:
+        if False:
             print("reach the end of datafile, start a new reader")
             self.data_cnt = 0
             self._reader = self._get_reader()
-        column_l = self._reader.readline().rstrip("\n").split(self.separator)
-        self.data_cnt += 1
+        #column_l = self._reader.readline().rstrip("\n").split(self.separator)
+        #self.data_cnt += 1
+        column_l = linecache.getline(self.file_path, index+1).rstrip("\n").split(self.separator)  # 1-based indexing for some reason???
+        if len(column_l) <= max(self.selected_col_ids):
+            raise IndexError("row size: %i, target index: %i" % (len(column_l), max(self.selected_col_ids)))
         column_l = [dtype(column_l[col_id]) for col_id, dtype in zip(self.selected_col_ids, self.dtypes)]
         return column_l
