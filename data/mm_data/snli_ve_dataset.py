@@ -141,7 +141,7 @@ class SnliVeDataset(OFADataset):
         elif label == 'neutral':
             label = 'maybe'
         else:
-            raise NotImplementedError
+            raise NotImplementedError("Unexpected label, %s" % (label))
 
         image = Image.open(BytesIO(base64.urlsafe_b64decode(image)))
         patch_image = self.patch_resize_transform(image)
@@ -170,7 +170,7 @@ class SnliVeDataset(OFADataset):
             target_item = torch.cat([prev_output_item[1:], self.eos_item])
             decoder_prompt = src_item[:-1]
         else:
-            raise NotImplementedError
+            raise NotImplementedError("Unexpected prompt type: %s" % (self.prompt_type))
         target_item[:-len(tgt_item)-1] = self.tgt_dict.pad()
 
         example = {
