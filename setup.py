@@ -19,6 +19,6 @@ for i, pkg in enumerate(found_pkgs):
 setup(
         name='OFA',
         packages=pkgs,
-        package_dir=pkg_dirs,
+        # package_dir=pkg_dirs,
         package_data={"": ["*.txt", "*.json", "*.bpe"]}
 )
