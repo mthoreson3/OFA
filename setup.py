@@ -22,5 +22,6 @@ setup(
         author='Junyang Lin and Yang An',
         packages=pkgs,
         package_dir=pkg_dirs,
-        package_data={"": ["*.txt", "*.json", "*.bpe"]}
+        package_data={"": ["*.txt", "*.json", "*.bpe"]},
+        zip_safe=False
 )
