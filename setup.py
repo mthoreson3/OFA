@@ -1,13 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 setup(
         name='OFA', 
-        packages=find_packages(
-            include=[
-                'ofa_module',
-                'criterions',
-                'data',
-                'models',
-                'tasks'
-                'utils']
-        )
+        packages=find_namespace_packages()
 )
