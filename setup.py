@@ -8,6 +8,7 @@ setup(
             'OFA.models':'./models',
             'OFA.tasks':'./tasks',
             'OFA.criterions':'./criterions',
-            'OFA.utils':'./utils',            
-        }
+            'OFA.utils':'./utils' 
+        },
+        package_data={"": ["*.txt", "*.json", "*.bpe"]}
 )
