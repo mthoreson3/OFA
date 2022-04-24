@@ -1,11 +1,13 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 
 ofa_name = 'OFA'
 
 pkgs = [ofa_name]
 
-found_pkgs = find_packages(exclude=['fairseq', 'fairseq.*', 'ofa_module'])
+found_pkgs = find_namespace_packages(exclude=['fairseq', 'fairseq.*',
+                                              'ofa_module', 'run_scripts*', 
+                                              'build*', 'dist*'])
 
 prefixed_pkgs = [ofa_name+'.'+pkg for pkg in found_pkgs]
 
@@ -15,6 +17,9 @@ for i, pkg in enumerate(found_pkgs):
     pkg_dir = './' + pkg.replace('.', '/')
     pkg_dirs[prefixed_pkgs[i]] = pkg_dir
     pkgs.append(prefixed_pkgs[i])
+
+print(pkgs)
+print(pkg_dirs)
 
 setup(
         name='OFA',
