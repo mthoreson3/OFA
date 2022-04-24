@@ -18,7 +18,9 @@ for i, pkg in enumerate(found_pkgs):
 
 setup(
         name='OFA',
+        version='0.0.0',
+        author='Junyang Lin and Yang An',
         packages=pkgs,
-        # package_dir=pkg_dirs,
+        package_dir=pkg_dirs,
         package_data={"": ["*.txt", "*.json", "*.bpe"]}
 )
