@@ -11,7 +11,7 @@ import warnings
 import numpy as np
 import torch
 import base64
-import utils.transforms as T
+import OFA.utils.transforms as T
 
 from PIL import Image, ImageFile
 
