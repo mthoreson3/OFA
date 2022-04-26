@@ -12,8 +12,8 @@ import os
 import torch
 import torch.distributed as dist
 
-from data import data_utils
-from tasks.nlg_tasks.gigaword import fix_tokenization
+from OFA.data import data_utils
+from OFA.tasks.nlg_tasks.gigaword import fix_tokenization
 
 
 def get_symbols_to_strip_from_output(generator):

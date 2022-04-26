@@ -14,12 +14,12 @@ import torch
 import base64
 from torchvision import transforms
 from timm.data import create_transform
-from utils.vision_helper import RandomAugment
+from OFA.utils.vision_helper import RandomAugment
 
 from PIL import Image, ImageFile
 
-from data import data_utils
-from data.ofa_dataset import OFADataset
+from OFA.data import data_utils
+from OFA.data.ofa_dataset import OFADataset
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 ImageFile.MAX_IMAGE_PIXELS = None
@@ -30,6 +30,7 @@ warnings.filterwarnings("ignore", "(Possibly )?corrupt EXIF data", UserWarning)
 
 IMAGENET_DEFAULT_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_DEFAULT_STD = (0.229, 0.224, 0.225)
+
 
 def collate(samples, pad_idx, eos_idx):
     if len(samples) == 0:

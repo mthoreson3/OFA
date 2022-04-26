@@ -27,7 +27,7 @@ from fairseq.nan_detector import NanDetector
 from fairseq.optim import lr_scheduler
 from omegaconf import OmegaConf
 
-from utils import checkpoint_utils
+from OFA.utils import checkpoint_utils
 
 logger = logging.getLogger(__name__)
 
